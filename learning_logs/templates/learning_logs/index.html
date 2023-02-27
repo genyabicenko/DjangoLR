@@ -1,0 +1,35 @@
+
+{% extends "learning_logs/base.html" %}
+
+{% block content %}
+     <p>Learning Log helps you keep track of your learning for any topic you're learning about.</p>
+{% endblock content %}
+{% extends "learning_logs/base.html" %}
+{% block content %}
+     <p>Topics</p>
+     <ul>
+         {% for topic in topics %}
+             <li>{{topic}}</li>
+         {% empty %}
+             <li>No topics have been added yet.</li>
+         {% endfor %}
+     </ul>
+{% endblock content %}
+
+{% extends 'learning_logs/base.html' %}
+
+{% block content %}
+     <p>Topic: {{ topic }}</p>
+
+     <p>Entries:</p>
+     <ul>
+             {% for entry in entries %}
+                 <li>
+                     <p>{{ entry.date_added|date:'M d, Y H:i' }}</p>
+                     <p>{{ entry.text|linebreaks }}</p>
+                 </li>
+             {% empty %}
+                 <li>Тhere are no entries for this topic yet.</li>
+             {% endfor %}
+     </ul>
+{% endblock content %}
